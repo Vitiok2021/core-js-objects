@@ -80,7 +80,17 @@ function removeProperties(obj, keys) {
  *    compareObjects({a: 1, b: 2}, {a: 1, b: 2}) => true
  *    compareObjects({a: 1, b: 2}, {a: 1, b: 3}) => false
  */
-function compareObjects(obj1, obj2) {}
+function compareObjects(obj1, obj2) {
+  const keysObj1 = Object.keys(obj1);
+  const keysObj2 = Object.keys(obj2);
+  if (keysObj1.length !== keysObj2.length) return false;
+  for (let i = 0; i < keysObj1.length; i += 1) {
+    const key1 = keysObj1[i];
+
+    if (obj1[key1] !== obj2[key1]) return false;
+  }
+  return true;
+}
 
 /**
  * Checks if the source object is empty.
